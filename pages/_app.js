@@ -3,7 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Proptypes from "prop-types";
 import 'antd/dist/antd.css'; 
-
+import wrapper from "../store/configureStore";
 
 const NextApp = ({Component}) => {
     return (
@@ -21,4 +21,4 @@ NextApp.proptypes = {
     Component : Proptypes.elementType.isRequired,
 };
 
-export default NextApp;
+export default wrapper.withRedux(NextApp);

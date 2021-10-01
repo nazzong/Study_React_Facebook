@@ -7,23 +7,17 @@ import {
   BookOutlined,
 } from "@ant-design/icons";
 import Link from "next/link";
-
-const LoginSection = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justfy-content: center;
-  padding: 20px;
-`;
+import { useSelector } from "react-redux";
 
 const hoverAnimation = keyframes`
-    0%{
+    0% {
         opacity : 1;
     } 50% {
         opacity : 0.3;
-    } 100%{
+    } 100% {
         opacity : 1;
     }
+
 `;
 
 const MenuRow = styled(Row)`
@@ -38,7 +32,6 @@ const MenuRow = styled(Row)`
   font-size: 17px;
 
   cursor: pointer;
-  transition: 0.4s;
 `;
 
 const IconCol = styled(Col)`
@@ -56,39 +49,59 @@ const ContentCol = styled(Col)`
   }
 `;
 
-const MyMenu = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+const LoginSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+`;
 
-  return isLoggedIn ? (
+const GuideTxt = styled.p`
+  font-size: 14px;
+  color: #999;
+  margin-top: 10px;
+`;
+
+const MyMenu = () => {
+  const { me } = useSelector((state) => state.user);
+
+  return me ? (
     <MenuRow>
       <>
         <IconCol span={4}>
           <InfoCircleOutlined />
         </IconCol>
-        <ContentCol span={18}> 내 정보 </ContentCol>
+        <Link href="/me/profile">
+          <ContentCol span={18}> 내 정보 </ContentCol>
+        </Link>
       </>
 
       <>
         <IconCol span={4}>
           <SwapOutlined />
         </IconCol>
-        <ContentCol span={18}> 팔로우 &#38; 팔로잉 </ContentCol>
+        <Link href="/me/follow">
+          <ContentCol span={18}> 팔로우 &#38; 팔로잉 </ContentCol>
+        </Link>
       </>
 
       <>
         <IconCol span={4}>
           <BookOutlined />
         </IconCol>
-        <ContentCol span={18}> 컬렉션 </ContentCol>
+        <Link href="/me/collection">
+          <ContentCol span={18}> 컬렉션 </ContentCol>
+        </Link>
       </>
     </MenuRow>
   ) : (
-    <div>
+    <LoginSection>
       <Link href="/login">
-        <Button type="primary">GO TO LOGIN</Button>
+        <Button type="primary">GO TO LOGIN!</Button>
       </Link>
-      <p></p>
-    </div>
+      <GuideTxt>서비스를 사용하기 위해 로그인을 해주세요.</GuideTxt>
+    </LoginSection>
   );
 };
 
