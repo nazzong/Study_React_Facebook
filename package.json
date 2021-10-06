@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "next -p 3000"
+    "dev": "next -p 3000",
+    "build" : "NODE_ENV=production next build",
+    "start" : "NODE_ENV=production next start -p 3000"
   },
   "author": "",
   "license": "ISC",
