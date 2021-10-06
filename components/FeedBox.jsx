@@ -27,27 +27,27 @@ const FeedImage = styled(Image)`
   }
 `;
 
-const FeedBox = () => {
+const FeedBox = ({ feedData }) => {
   return (
     <FeedCard
       cover={
         <FeedImage
-          alt="example"
-          src="https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png"
+          alt={feedData.title}
+          src={`https://api.schoolhealing4.co.kr/${feedData.imagePath}`}
         />
       }
       actions={[
-        <CommentOutlined key="setting" />,
-        <HeartOutlined key="edit" />,
-        <EditOutlined key="ellipsis" />,
+        <CommentOutlined key="comment" />,
+        <HeartOutlined key="heart" />,
+        <EditOutlined key="edit" />,
       ]}
     >
       <FeedCard.Meta
         avatar={
           <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
         }
-        title="Card title"
-        description="This is the description"
+        title={feedData.title}
+        description={feedData.content}
       />
     </FeedCard>
   );

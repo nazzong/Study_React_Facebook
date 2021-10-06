@@ -5,7 +5,7 @@ import feedSaga from "./feed";
 import axios from "axios";
 // import backURL from "../config/config";
 
-axios.defaults.baseURL = "http://localhost:4000";
+axios.defaults.baseURL = "https://api.schoolhealing4.co.kr";
 axios.defaults.withCredentials = true;
 
 export default function* rootSaga() {
