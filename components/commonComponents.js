@@ -154,3 +154,23 @@ export const CommonButton = styled(Button)`
     color: ${(props) => props.color || Theme.white_C};
   }
 `;
+
+export const Image = styled.img`
+  display: ${(props) => props.display};
+  width: ${(props) => props.width || `100%`};
+  min-width: ${(props) => props.minWidth};
+  height: ${(props) => props.height || `auto`};
+  margin: ${(props) => props.margin};
+  cursor: ${(props) => props.cursor};
+  transform: ${(props) => props.transform};
+  object-fit: ${(props) => props.objectFit || `cover`};
+  position: ${(props) => props.position};
+  box-shadow: ${(props) => props.shadow};
+  border: ${(props) => props.border};
+  border-radius: ${(props) => props.radius};
+  z-index: ${(props) => props.zIndex};
+  top: ${(props) => props.top};
+  left: ${(props) => props.left};
+  bottom: ${(props) => props.bottom};
+  right: ${(props) => props.right};
+`;
